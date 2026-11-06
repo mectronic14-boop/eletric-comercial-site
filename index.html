@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eletric Comercial — Trading Internacional e Infraestrutura Elétrica Industrial</title>
+<meta name="description" content="Eletric Comercial: trading internacional e fornecimento de infraestrutura elétrica industrial — energia solar, alta tensão e automação, com compliance, ISO 9001 e inspeção pré-embarque.">
+<meta name="theme-color" content="#0F172A">
+<meta name="robots" content="noindex, nofollow"><!-- prévia: remover após aprovação -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap">
+<style>
+/* =========================================================
+   1. DESIGN SYSTEM — TOKENS
+   ========================================================= */
+:root {
+  /* Cores primárias e neutras */
+  --color-primary: #007E92;
+  --color-primary-hover: #006574;
+  --color-primary-active: #004D59;
+  --color-dark-slate: #0F172A;
+  --color-surface-dark: #1E293B;
+  --color-cool-gray: #94A3B8;
+  --color-light-gray: #F8FAFC;
+  --color-border: #E2E8F0;
+  --color-white: #FFFFFF;
+
+  /* Derivados para contraste WCAG AA */
+  --color-text: #0F172A;
+  --color-text-muted: #475569;         /* 7.5:1 sobre branco */
+  --color-text-on-dark: #CBD5E1;       /* 12:1 sobre #0F172A */
+  --color-accent-on-dark: #5CC8D7;     /* 9:1 sobre #0F172A */
+  --color-error: #B42318;
+  --color-success: #067647;
+
+  /* Tipografia */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  /* Espaçamento (grid 8px) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  /* Layout */
+  --container-max-width: 1200px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --header-h: 72px;
+  --topbar-h: 36px;
+
+  /* Movimento */
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --dur: .6s;
+}
+
+/* =========================================================
+   2. BASE (mobile-first)
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + var(--space-sm)); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin: 0; line-height: 1.12; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-primary-hover); }
+button, input, select, textarea { font: inherit; color: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+:focus-visible {
+  outline: 3px solid var(--color-accent-on-dark);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+.section--light :focus-visible, .form :focus-visible { outline-color: var(--color-primary); }
+
+.skip-link {
+  position: absolute; left: var(--space-sm); top: -100px; z-index: 1000;
+  background: var(--color-white); color: var(--color-dark-slate);
+  padding: var(--space-xs) var(--space-sm); border-radius: var(--radius-sm); font-weight: 600;
+}
+.skip-link:focus { top: var(--space-sm); }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.container { width: 100%; max-width: var(--container-max-width); margin-inline: auto; padding-inline: var(--space-sm); }
+@media (min-width: 768px) { .container { padding-inline: var(--space-md); } }
+
+/* =========================================================
+   3. COMPONENTES GENÉRICOS
+   ========================================================= */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--color-primary);
+}
+.eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+.eyebrow--on-dark { color: var(--color-accent-on-dark); }
+
+.section-title { font-weight: 800; font-size: clamp(28px, 4.2vw, 44px); }
+.section-lead { font-size: 17px; color: var(--color-text-muted); max-width: 60ch; }
+.section-lead--on-dark { color: var(--color-text-on-dark); font-weight: 300; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 12px 24px;
+  font-family: var(--font-heading); font-weight: 600; font-size: 15px; line-height: 1.2;
+  border-radius: var(--radius-sm); border: 1px solid transparent; cursor: pointer;
+  transition: background-color .2s, border-color .2s, color .2s, transform .2s var(--ease-out);
+}
+.btn__icon { width: 18px; height: 18px; transition: transform .25s var(--ease-out); }
+.btn:hover .btn__icon { transform: translateX(4px); }
+.btn--primary { background: var(--color-primary); color: var(--color-white); }
+.btn--primary:hover { background: var(--color-primary-hover); color: var(--color-white); }
+.btn--primary:active { background: var(--color-primary-active); transform: translateY(1px); }
+.btn--ghost { background: transparent; color: var(--color-white); border-color: rgba(255,255,255,.4); }
+.btn--ghost:hover { border-color: var(--color-white); background: rgba(255,255,255,.08); color: var(--color-white); }
+.btn--lg { min-height: 56px; padding: 16px 32px; font-size: 16px; }
+.btn--block { width: 100%; }
+
+/* Reveal ao rolar (ativo apenas com JS e sem reduced-motion) */
+.js .reveal { opacity: 0; transform: translate3d(0, 32px, 0); transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out); transition-delay: var(--reveal-delay, 0s); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* =========================================================
+   4. TOPBAR CORPORATIVA
+   ========================================================= */
+.topbar { background: #0B1222; color: var(--color-cool-gray); font-size: 12px; height: var(--topbar-h); display: none; }
+.topbar__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); }
+.topbar__list { display: flex; gap: var(--space-md); }
+.topbar__link { color: var(--color-cool-gray); }
+.topbar__link:hover { color: var(--color-white); }
+@media (min-width: 768px) { .topbar { display: block; } }
+
+/* =========================================================
+   5. HEADER FIXO COM GLASSMORPHISM
+   ========================================================= */
+.header {
+  position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--header-h);
+  transition: background-color .35s, backdrop-filter .35s, border-color .35s, transform .35s var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+@media (min-width: 768px) { .header { top: var(--topbar-h); } .header--scrolled { top: 0; } }
+.header--scrolled {
+  background: rgba(15, 23, 42, .72);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  border-bottom-color: rgba(148, 163, 184, .18);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .header--scrolled { background: rgba(15, 23, 42, .96); }
+}
+.header__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); }
+
+.brand { display: inline-flex; align-items: center; gap: 12px; color: var(--color-white); }
+.brand:hover { color: var(--color-white); }
+.brand__logo { display: block; width: 168px; height: auto; }
+.brand__logo--footer { width: 220px; }
+@media (min-width: 768px) { .brand__logo { width: 200px; } .brand__logo--footer { width: 220px; } }
+.brand__text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand__name { font-weight: 800; font-size: 16px; letter-spacing: .02em; }
+.brand__tag { font-size: 10px; letter-spacing: .24em; color: var(--color-cool-gray); }
+
+.nav__toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: var(--radius-sm);
+  background: transparent; border: 1px solid rgba(255,255,255,.25); color: var(--color-white); cursor: pointer;
+}
+.nav__toggle-bar, .nav__toggle-bar::before, .nav__toggle-bar::after {
+  display: block; width: 20px; height: 2px; background: currentColor; position: relative; transition: transform .25s, background-color .25s;
+}
+.nav__toggle-bar::before, .nav__toggle-bar::after { content: ""; position: absolute; left: 0; }
+.nav__toggle-bar::before { top: -6px; }
+.nav__toggle-bar::after { top: 6px; }
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar { background: transparent; }
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar::before { transform: translateY(6px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] .nav__toggle-bar::after { transform: translateY(-6px) rotate(-45deg); }
+
+.nav__menu {
+  position: fixed; inset: var(--header-h) 0 auto 0;
+  background: rgba(15, 23, 42, .97);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  padding: var(--space-md) var(--space-sm) var(--space-lg);
+  display: flex; flex-direction: column; gap: var(--space-xs);
+  border-bottom: 1px solid var(--color-surface-dark);
+  transform: translateY(-8px); opacity: 0; visibility: hidden;
+  transition: opacity .25s, transform .25s var(--ease-out), visibility .25s;
+}
+.nav__menu--open { transform: none; opacity: 1; visibility: visible; }
+.nav__link { display: flex; align-items: center; min-height: 48px; color: var(--color-text-on-dark); font-size: 16px; font-weight: 600; position: relative; }
+.nav__link:hover, .nav__link[aria-current="true"] { color: var(--color-white); }
+.nav__cta { margin-top: var(--space-xs); }
+
+@media (min-width: 1024px) {
+  .nav__toggle { display: none; }
+  .nav__menu {
+    position: static; flex-direction: row; align-items: center; gap: var(--space-lg);
+    background: none; padding: 0; border: 0; transform: none; opacity: 1; visibility: visible;
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+  .nav__link { font-size: 14px; font-weight: 400; min-height: 44px; }
+  .nav__link::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 8px; height: 2px;
+    background: var(--color-accent-on-dark); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease-out);
+  }
+  .nav__link:hover::after, .nav__link[aria-current="true"]::after { transform: scaleX(1); }
+  .nav__cta { margin-top: 0; }
+}
+
+/* =========================================================
+   6. HERO PARALLAX
+   ========================================================= */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 100svh; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  color: var(--color-white); background: var(--color-dark-slate);
+  padding-top: calc(var(--header-h) + var(--space-xl));
+}
+@supports (min-height: 100svh) { .hero { min-height: 100svh; } }
+.hero__media { position: absolute; inset: -12% 0 -12% 0; z-index: -3; will-change: transform; }
+.hero__media--plain { background: radial-gradient(900px 600px at 80% 30%, rgba(0,126,146,.35), transparent 70%), linear-gradient(160deg, #1E293B 0%, #0F172A 55%, #0B3B45 100%); }
+.hero__img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transform: scale(1.06); }
+.hero__overlay {
+  position: absolute; inset: 0; z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(15,23,42,.78) 0%, rgba(15,23,42,.55) 38%, rgba(15,23,42,.92) 100%),
+    linear-gradient(90deg, rgba(15,23,42,.88) 0%, rgba(15,23,42,.35) 70%);
+}
+.hero__grid {
+  position: absolute; inset: -20% 0 0 0; z-index: -1; pointer-events: none; will-change: transform;
+  background-image: linear-gradient(rgba(148,163,184,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+          mask-image: linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent);
+}
+.hero__content { position: relative; padding-bottom: var(--space-xl); will-change: transform; }
+.hero__title { font-weight: 800; font-size: clamp(36px, 7vw, 72px); line-height: 1.03; letter-spacing: -0.025em; max-width: 16ch; margin-top: var(--space-md); }
+.hero__title-accent { color: var(--color-accent-on-dark); }
+.hero__lead { margin-top: var(--space-md); font-weight: 300; font-size: clamp(16px, 2vw, 19px); line-height: 1.7; color: var(--color-text-on-dark); max-width: 58ch; }
+.hero__actions { margin-top: var(--space-lg); display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+
+.hero__stats {
+  position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm);
+  padding-bottom: var(--space-xl);
+}
+.stat {
+  padding: var(--space-md);
+  background: rgba(30, 41, 59, .55);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, .22); border-radius: var(--radius-md);
+  will-change: transform;
+}
+.stat__value { display: block; font-weight: 800; font-size: clamp(28px, 4vw, 40px); line-height: 1; color: var(--color-white); font-variant-numeric: tabular-nums; }
+.stat__suffix { color: var(--color-accent-on-dark); }
+.stat__label { display: block; margin-top: var(--space-xs); font-size: 13px; color: var(--color-text-on-dark); line-height: 1.45; }
+
+@media (min-width: 1024px) {
+  .hero { justify-content: center; }
+  .hero__layout { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--space-2xl); align-items: end; }
+  .hero__content { padding-bottom: var(--space-3xl); }
+  .hero__stats { grid-template-columns: 1fr; padding-bottom: var(--space-3xl); max-width: 320px; justify-self: end; }
+  .stat--offset-1 { margin-left: -48px; }
+  .stat--offset-2 { margin-left: -16px; }
+  .js .stat { animation: float 7s ease-in-out infinite; }
+  .js .stat:nth-child(2) { animation-delay: -2.3s; }
+  .js .stat:nth-child(3) { animation-delay: -4.6s; }
+}
+@keyframes float { 0%,100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+
+.hero__scroll {
+  position: absolute; left: 50%; bottom: var(--space-sm); translate: -50% 0;
+  display: none; flex-direction: column; align-items: center; gap: 6px;
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--color-text-on-dark);
+}
+.hero__scroll-line { width: 1px; height: 36px; background: linear-gradient(var(--color-accent-on-dark), transparent); animation: scrollcue 2s ease-in-out infinite; transform-origin: top; }
+@keyframes scrollcue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+@media (min-width: 1024px) { .hero__scroll { display: flex; } }
+
+/* =========================================================
+   7. PERFIL CORPORATIVO & PRESENÇA GLOBAL (grid assimétrico)
+   ========================================================= */
+.section { padding-block: var(--space-2xl); }
+@media (min-width: 1024px) { .section { padding-block: var(--space-3xl); } }
+.section--light { background: var(--color-light-gray); border-top: 1px solid var(--color-border); }
+.section--dark { background: var(--color-dark-slate); color: var(--color-white); }
+
+.profile { display: grid; gap: var(--space-xl); }
+.profile__intro { display: flex; flex-direction: column; gap: var(--space-md); }
+.profile__text { color: var(--color-text-muted); font-size: 17px; }
+.profile__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; margin-top: var(--space-xs); }
+.fact { background: var(--color-white); padding: var(--space-md); }
+.fact__value { display: block; font-weight: 800; font-size: clamp(20px, 5vw, 28px); line-height: 1.1; overflow-wrap: anywhere; }
+.fact__label { display: block; font-size: 13px; color: var(--color-text-muted); margin-top: 4px; }
+
+.mosaic { display: grid; gap: var(--space-sm); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.media-card {
+  position: relative; overflow: hidden; border-radius: var(--radius-md); background: var(--color-surface-dark);
+  min-height: 220px; isolation: isolate; color: var(--color-white);
+}
+.media-card--tall { grid-column: 1 / -1; min-height: 300px; }
+.media-card--wide { grid-column: 1 / -1; }
+.media-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s var(--ease-out); }
+.media-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(15,23,42,0) 35%, rgba(15,23,42,.88) 100%); }
+.media-card:hover .media-card__img { transform: scale(1.06); }
+.media-card__body { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-md); }
+.media-card__kicker { font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--color-accent-on-dark); }
+.media-card__title { font-weight: 600; font-size: 18px; margin-top: 4px; }
+
+.presence { margin-top: var(--space-xl); padding: var(--space-lg); background: var(--color-dark-slate); color: var(--color-white); border-radius: var(--radius-md); display: grid; gap: var(--space-md); position: relative; overflow: hidden; }
+.presence::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 300px at 90% 0%, rgba(0,126,146,.35), transparent 70%); pointer-events: none; }
+.presence__title { font-weight: 600; font-size: 20px; position: relative; }
+.presence__text { color: var(--color-text-on-dark); font-size: 15px; position: relative; }
+.presence__list { display: flex; flex-wrap: wrap; gap: var(--space-xs); position: relative; }
+.presence__item { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid rgba(148,163,184,.3); border-radius: 999px; font-size: 13px; color: var(--color-text-on-dark); }
+.presence__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent-on-dark); box-shadow: 0 0 0 0 rgba(92,200,215,.6); animation: pulse 2.4s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(92,200,215,.55); } 70% { box-shadow: 0 0 0 10px rgba(92,200,215,0); } 100% { box-shadow: 0 0 0 0 rgba(92,200,215,0); } }
+
+@media (min-width: 768px) {
+  .mosaic { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 220px; }
+  .media-card { min-height: 0; }
+  .media-card--tall { grid-column: span 2; grid-row: span 2; min-height: 0; }
+  .media-card--wide { grid-column: span 1; }
+  .presence { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); align-items: center; padding: var(--space-xl); }
+}
+@media (min-width: 1024px) {
+  .profile { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-2xl); align-items: start; }
+  .profile__intro { position: sticky; top: calc(var(--header-h) + var(--space-lg)); }
+}
+
+/* =========================================================
+   8. BANNER INTERMEDIÁRIO (parallax CSS puro)
+   ========================================================= */
+.banner {
+  position: relative; isolation: isolate; color: var(--color-white); overflow: hidden;
+  padding-block: var(--space-3xl);
+  background-color: var(--color-dark-slate);
+  background-image:
+    linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.5) 50%, rgba(15,23,42,.92)),
+    url("img/compromisso-subestacao.webp");
+  background-size: cover; background-position: center;
+  background-attachment: scroll; /* fallback mobile / iOS */
+}
+@media (min-width: 1024px) and (hover: hover) {
+  .banner {
+    background-image:
+      linear-gradient(180deg, rgba(15,23,42,.92), rgba(15,23,42,.5) 50%, rgba(15,23,42,.92)),
+      url("img/compromisso-subestacao.webp");
+    background-attachment: fixed; /* parallax CSS puro */
+    padding-block: 160px;
+  }
+}
+.banner__inner { display: flex; flex-direction: column; gap: var(--space-md); align-items: flex-start; max-width: 860px; }
+.banner__quote { font-weight: 800; font-size: clamp(26px, 4.4vw, 48px); line-height: 1.12; letter-spacing: -0.015em; }
+.banner__text { font-weight: 300; font-size: 18px; color: var(--color-text-on-dark); max-width: 60ch; }
+.banner__marquee {
+  position: absolute; left: 0; right: 0; bottom: var(--space-md); z-index: -1; white-space: nowrap; pointer-events: none;
+  font-weight: 800; font-size: clamp(64px, 12vw, 160px); line-height: 1; color: transparent;
+  -webkit-text-stroke: 1px rgba(148,163,184,.22); will-change: transform;
+}
+
+/* =========================================================
+   9. GOVERNANÇA & ESG — LINHA DO TEMPO INTERATIVA
+   ========================================================= */
+.esg__head { display: grid; gap: var(--space-md); margin-bottom: var(--space-xl); }
+.esg__body { display: grid; gap: var(--space-lg); }
+
+.timeline { position: relative; display: flex; flex-direction: column; gap: 0; }
+.timeline::before { content: ""; position: absolute; left: 23px; top: 24px; bottom: 24px; width: 2px; background: var(--color-border); }
+.timeline__progress { position: absolute; left: 23px; top: 24px; width: 2px; height: 0; background: var(--color-primary); transition: height .5s var(--ease-out); }
+.timeline__tab {
+  position: relative; display: flex; align-items: center; gap: var(--space-sm); width: 100%;
+  min-height: 72px; padding: var(--space-sm) var(--space-sm) var(--space-sm) 0;
+  background: none; border: 0; border-radius: var(--radius-sm); text-align: left; cursor: pointer;
+}
+.timeline__marker {
+  position: relative; z-index: 1; flex: none; width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center; font-weight: 800; font-size: 14px;
+  background: var(--color-white); border: 2px solid var(--color-border); color: var(--color-text-muted);
+  transition: background-color .3s, border-color .3s, color .3s, transform .3s var(--ease-out);
+}
+.timeline__label { display: flex; flex-direction: column; }
+.timeline__kicker { font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--color-text-muted); }
+.timeline__name { font-family: var(--font-heading); font-weight: 600; font-size: 17px; color: var(--color-text); }
+.timeline__tab:hover .timeline__marker { border-color: var(--color-primary); color: var(--color-primary); }
+.timeline__tab[aria-selected="true"] .timeline__marker { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-white); transform: scale(1.06); }
+.timeline__tab[aria-selected="true"] .timeline__name { color: var(--color-primary-hover); }
+
+.esg-panel {
+  background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+  padding: var(--space-lg); display: grid; gap: var(--space-md);
+  box-shadow: 0 24px 48px -32px rgba(15,23,42,.28);
+}
+.esg-panel[hidden] { display: none; }
+.js .esg-panel { animation: panelIn .45s var(--ease-out); }
+@keyframes panelIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.esg-panel__icon { width: 56px; height: 56px; border-radius: var(--radius-sm); background: #E6F2F4; color: var(--color-primary-hover); display: grid; place-items: center; }
+.esg-panel__title { font-weight: 800; font-size: 26px; }
+.esg-panel__text { color: var(--color-text-muted); }
+.esg-panel__list { display: grid; gap: 12px; }
+.esg-panel__item { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; }
+.esg-panel__check { flex: none; width: 20px; height: 20px; margin-top: 3px; color: var(--color-primary); }
+
+@media (min-width: 1024px) {
+  .esg__head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
+  .esg__body { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: var(--space-2xl); align-items: start; }
+  .esg-panel { padding: var(--space-xl); }
+}
+
+/* =========================================================
+   10. SHOWCASE DE SOLUÇÕES — cards com hover profundo
+   ========================================================= */
+.solutions__head { display: grid; gap: var(--space-md); margin-bottom: var(--space-xl); }
+.solutions__grid { display: grid; gap: var(--space-md); perspective: 1200px; }
+.solution {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 460px; border-radius: var(--radius-md); color: var(--color-white);
+  background: var(--color-surface-dark); border: 1px solid rgba(148,163,184,.18);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  transform-style: preserve-3d;
+  transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0);
+  transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out), border-color .4s;
+}
+.solution__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.04); transition: transform 1.2s var(--ease-out), filter .6s; filter: saturate(.85); }
+.solution::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(15,23,42,.25) 0%, rgba(15,23,42,.7) 45%, rgba(15,23,42,.96) 100%);
+  transition: background .5s;
+}
+.solution::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(92,200,215,.18), transparent 60%);
+}
+.solution__body { padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-sm); transform: translateZ(40px); }
+.solution__code { font-size: 12px; font-weight: 600; letter-spacing: .2em; color: var(--color-accent-on-dark); }
+.solution__title { font-weight: 800; font-size: 28px; }
+.solution__text { color: var(--color-text-on-dark); font-size: 15px; }
+.solution__list {
+  display: grid; gap: 8px; font-size: 14px; color: var(--color-text-on-dark);
+  border-top: 1px solid rgba(148,163,184,.25); padding-top: var(--space-sm);
+}
+.solution__list li { display: flex; gap: 10px; align-items: center; }
+.solution__list li::before { content: ""; width: 6px; height: 6px; background: var(--color-accent-on-dark); border-radius: 1px; flex: none; }
+.solution__link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; color: var(--color-white); }
+.solution__link:hover { color: var(--color-accent-on-dark); }
+.solution__link::after { content: ""; position: absolute; inset: 0; } /* card inteiro clicável */
+
+.solution:hover, .solution:focus-within {
+  border-color: rgba(92,200,215,.55);
+  box-shadow: 0 40px 80px -32px rgba(0,0,0,.6), 0 0 0 1px rgba(92,200,215,.25);
+}
+.solution:hover .solution__img, .solution:focus-within .solution__img { transform: scale(1.12); filter: saturate(1); }
+.solution:hover::after { opacity: 1; }
+
+@media (min-width: 768px) { .solutions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .solution--featured { grid-column: 1 / -1; } }
+@media (min-width: 1024px) {
+  .solutions__head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
+  .solutions__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .solution--featured { grid-column: auto; }
+  .solution { min-height: 560px; }
+  .solution__list { max-height: 0; opacity: 0; overflow: hidden; padding-top: 0; border-top-color: transparent; transition: max-height .5s var(--ease-out), opacity .4s, padding-top .4s, border-color .4s; }
+  .solution:hover .solution__list, .solution:focus-within .solution__list { max-height: 200px; opacity: 1; padding-top: var(--space-sm); border-top-color: rgba(148,163,184,.25); }
+}
+
+/* =========================================================
+   11. CONTATO CORPORATIVO (RI / Diretoria)
+   ========================================================= */
+.contact { position: relative; overflow: hidden; }
+.contact::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(800px 400px at 0% 0%, rgba(0,126,146,.28), transparent 70%); }
+.contact__layout { position: relative; display: grid; gap: var(--space-xl); }
+.contact__info { display: flex; flex-direction: column; gap: var(--space-md); }
+.contact__channels { display: grid; gap: var(--space-md); margin-top: var(--space-sm); }
+.channel { border-left: 2px solid var(--color-primary); padding-left: var(--space-sm); }
+.channel__label { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--color-cool-gray); }
+.channel__value { font-weight: 600; font-size: 16px; color: var(--color-white); }
+
+.form {
+  background: var(--color-white); color: var(--color-text); border-radius: var(--radius-md);
+  padding: var(--space-md); display: grid; gap: var(--space-md);
+  box-shadow: 0 40px 80px -40px rgba(0,0,0,.6);
+}
+.form__header { display: grid; gap: 4px; }
+.form__title { font-weight: 800; font-size: 22px; }
+.form__subtitle { font-size: 14px; color: var(--color-text-muted); }
+.form__grid { display: grid; gap: var(--space-md); }
+.form__field { display: flex; flex-direction: column; gap: 6px; }
+.form__label { font-size: 13px; font-weight: 600; }
+.form__req { color: var(--color-error); }
+.form__control {
+  width: 100%; min-height: 48px; padding: 12px 14px;
+  font-size: 15px; background: var(--color-white); color: var(--color-text);
+  border: 1px solid #94A3B8; border-radius: var(--radius-sm);
+  transition: border-color .2s, box-shadow .2s;
+}
+.form__control::placeholder { color: #64748B; }
+.form__control:hover { border-color: var(--color-text-muted); }
+.form__control:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0,126,146,.22); }
+.form__control--textarea { min-height: 120px; resize: vertical; }
+.form__field--invalid .form__control { border-color: var(--color-error); box-shadow: 0 0 0 3px rgba(180,35,24,.12); }
+.form__field--valid .form__control { border-color: var(--color-success); }
+.form__error { font-size: 13px; color: var(--color-error); min-height: 0; }
+.form__error:empty { display: none; }
+.form__hint { font-size: 12px; color: var(--color-text-muted); display: flex; justify-content: space-between; }
+.form__consent { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--color-text-muted); }
+.form__checkbox { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--color-primary); }
+.form__status { font-size: 14px; font-weight: 600; padding: 12px 16px; border-radius: var(--radius-sm); }
+.form__status:empty { display: none; }
+.form__status--success { background: #ECFDF3; color: var(--color-success); }
+.form__status--error { background: #FEF3F2; color: var(--color-error); }
+@media (min-width: 640px) { .form { padding: var(--space-xl); } .form__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .form__field--full { grid-column: 1 / -1; } }
+@media (min-width: 1024px) { .contact__layout { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-2xl); align-items: start; } }
+
+/* =========================================================
+   12. FOOTER CORPORATIVO
+   ========================================================= */
+.footer { background: #0B1222; color: var(--color-cool-gray); padding-block: var(--space-2xl) var(--space-lg); font-size: 14px; }
+.footer__grid { display: grid; gap: var(--space-xl); }
+.footer__about { display: grid; gap: var(--space-sm); max-width: 360px; }
+.footer__heading { font-family: var(--font-heading); font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--color-white); margin-bottom: var(--space-sm); }
+.footer__list { display: grid; gap: 4px; }
+.footer__link { color: var(--color-cool-gray); display: inline-flex; min-height: 36px; align-items: center; }
+.footer__link:hover { color: var(--color-white); }
+.footer__legal { display: grid; gap: 4px; font-style: normal; line-height: 1.7; }
+.footer__bottom { margin-top: var(--space-xl); padding-top: var(--space-md); border-top: 1px solid var(--color-surface-dark); display: flex; flex-wrap: wrap; gap: var(--space-sm); justify-content: space-between; font-size: 13px; }
+@media (min-width: 768px) { .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .footer__grid { grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); } }
+
+/* =========================================================
+   13. REDUCED MOTION — desativa parallax e animações
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  .js .reveal { opacity: 1; transform: none; }
+  .banner { background-attachment: scroll !important; }
+  .hero__media, .hero__grid, .hero__content, .banner__marquee, .stat { transform: none !important; translate: none !important; }
+  .solution { transform: none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ============ TOPBAR ============ -->
+<div class="topbar" role="region" aria-label="Acesso institucional">
+  <div class="container topbar__inner">
+    <span>Trading internacional · Infraestrutura elétrica industrial</span>
+    <ul class="topbar__list">
+      <li><a class="topbar__link" href="#contato">Relações com Investidores</a></li>
+      <li><a class="topbar__link" href="#esg">Governança</a></li>
+      <li><a class="topbar__link" href="#contato">Fornecedores</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="brand" href="#topo" aria-label="Eletric Comercial — início">
+      <img class="brand__logo" src="data:image/webp;base64,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" alt="Eletric Comercial" width="480" height="86">
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <span class="nav__toggle-bar"></span>
+      </button>
+      <div class="nav__menu" id="menu">
+        <a class="nav__link" href="#companhia">A Companhia</a>
+        <a class="nav__link" href="#solucoes">Soluções</a>
+        <a class="nav__link" href="#esg">ESG</a>
+        <a class="nav__link" href="#contato">Contato</a>
+        <a class="btn btn--primary nav__cta" href="#contato">Fale com a Diretoria</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ============ HERO PARALLAX ============ -->
+<section class="hero" id="topo" aria-labelledby="hero-title">
+  <div class="hero__media hero__media--plain" data-parallax="0.35" aria-hidden="true"></div>
+  <div class="hero__overlay" aria-hidden="true"></div>
+  <div class="hero__grid" data-parallax="0.15" aria-hidden="true"></div>
+
+  <div class="container hero__layout">
+    <div class="hero__content" data-parallax="-0.08">
+      <span class="eyebrow eyebrow--on-dark">Trading &amp; Infraestrutura Elétrica</span>
+      <h1 class="hero__title" id="hero-title">Conectamos a indústria global à <span class="hero__title-accent">energia que move o Brasil.</span></h1>
+      <p class="hero__lead">Da origem internacional à entrega técnica em campo: importamos, certificamos e fornecemos equipamentos de energia solar, alta tensão e automação para projetos industriais de grande porte.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="#contato">Falar com um especialista
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost btn--lg" href="#solucoes">Conhecer soluções</a>
+      </div>
+    </div>
+
+    <!-- Estatísticas flutuantes: preencha data-target com o número real para ativar a contagem animada -->
+    <ul class="hero__stats" aria-label="Indicadores da companhia">
+      <li class="stat stat--offset-1 reveal" data-parallax="-0.18">
+        <span class="stat__value"><span data-count data-target="20">20</span><span class="stat__suffix">+</span></span>
+        <span class="stat__label">anos em comércio exterior e energia</span>
+      </li>
+      <li class="stat stat--offset-2 reveal" data-parallax="-0.26" style="--reveal-delay:.12s">
+        <span class="stat__value"><span data-count data-target="10">10</span></span>
+        <span class="stat__label">países de origem homologados</span>
+      </li>
+      <li class="stat reveal" data-parallax="-0.34" style="--reveal-delay:.24s">
+        <span class="stat__value"><span data-count data-target="500">500</span></span>
+        <span class="stat__label">projetos industriais atendidos</span>
+      </li>
+    </ul>
+  </div>
+  <div class="hero__scroll" aria-hidden="true"><span>Role</span><span class="hero__scroll-line"></span></div>
+</section>
+
+<!-- ============ PERFIL CORPORATIVO & PRESENÇA GLOBAL ============ -->
+<section class="section" id="companhia" aria-labelledby="companhia-title">
+  <div class="container">
+    <div class="profile">
+      <div class="profile__intro reveal">
+        <span class="eyebrow">A Companhia</span>
+        <h2 class="section-title" id="companhia-title">Engenharia de suprimentos para infraestrutura crítica.</h2>
+        <p class="profile__text">A Eletric Comercial une domínio técnico em sistemas elétricos e expertise em trading internacional para abastecer indústrias, concessionárias e EPCistas com equipamentos homologados — com previsibilidade de prazo, custo nacionalizado transparente e rastreabilidade de ponta a ponta.</p>
+        <dl class="profile__facts" style="grid-template-columns:1fr">
+          <div class="fact"><dt class="visually-hidden">Sede</dt><dd style="margin:0"><span class="fact__value">São Lourenço da Mata/PE</span><span class="fact__label">Sede corporativa</span></dd></div>
+        </dl>
+      </div>
+
+      <div class="mosaic">
+        <figure class="media-card media-card--tall reveal" style="margin:0">
+          <img class="media-card__img"
+            src="img/infraestrutura-transformador.webp"
+            srcset="img/infraestrutura-transformador-480.webp 480w, img/infraestrutura-transformador.webp 700w"
+            sizes="(min-width: 1024px) 470px, (min-width: 768px) 66vw, 100vw"
+            loading="lazy" decoding="async" width="700" height="525"
+            alt="Transformador de potência em subestação elétrica">
+          <figcaption class="media-card__body">
+            <span class="media-card__kicker">Infraestrutura</span>
+            <p class="media-card__title">Subestações e transformação de potência</p>
+          </figcaption>
+        </figure>
+        <figure class="media-card reveal" style="margin:0;--reveal-delay:.1s">
+          <img class="media-card__img"
+            src="img/engenharia-eletricista.webp"
+            srcset="img/engenharia-eletricista-480.webp 480w, img/engenharia-eletricista.webp 735w"
+            sizes="(min-width: 768px) 33vw, 50vw"
+            loading="lazy" decoding="async" width="735" height="490"
+            alt="Eletricista de capacete operando painel elétrico">
+          <figcaption class="media-card__body">
+            <span class="media-card__kicker">Engenharia</span>
+            <p class="media-card__title">Inspeção técnica em campo</p>
+          </figcaption>
+        </figure>
+        <figure class="media-card media-card--wide reveal" style="margin:0;--reveal-delay:.2s">
+          <img class="media-card__img"
+            src="img/operacao-linha-distribuicao.webp"
+            srcset="img/operacao-linha-distribuicao-480.webp 480w, img/operacao-linha-distribuicao.webp 598w"
+            sizes="(min-width: 768px) 33vw, 50vw"
+            loading="lazy" decoding="async" width="598" height="412"
+            alt="Técnico de capacete trabalhando em linha de distribuição ao pôr do sol">
+          <figcaption class="media-card__body">
+            <span class="media-card__kicker">Operação</span>
+            <p class="media-card__title">Linhas e redes de distribuição</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="presence reveal">
+      <div>
+        <h3 class="presence__title">Presença global, entrega local</h3>
+        <p class="presence__text">Rede de fabricantes qualificados nos principais polos produtivos do setor elétrico, com operação logística integrada até o canteiro de obra.</p>
+      </div>
+      <ul class="presence__list" aria-label="Regiões de origem">
+        <li class="presence__item"><span class="presence__dot" aria-hidden="true"></span>Ásia-Pacífico</li>
+        <li class="presence__item"><span class="presence__dot" aria-hidden="true"></span>Europa</li>
+        <li class="presence__item"><span class="presence__dot" aria-hidden="true"></span>América do Norte</li>
+        <li class="presence__item"><span class="presence__dot" aria-hidden="true"></span>América Latina</li>
+        <li class="presence__item"><span class="presence__dot" aria-hidden="true"></span>Brasil — [CENTRO LOGÍSTICO]</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BANNER INTERMEDIÁRIO PARALLAX ============ -->
+<section class="banner" aria-labelledby="banner-title">
+  <div class="banner__marquee" data-marquee="0.3" aria-hidden="true">ENERGIA · COMÉRCIO · INFRAESTRUTURA · ENERGIA · COMÉRCIO · INFRAESTRUTURA</div>
+  <div class="container">
+    <div class="banner__inner reveal">
+      <span class="eyebrow eyebrow--on-dark">Nosso compromisso</span>
+      <h2 class="banner__quote" id="banner-title">Cada componente certo, no prazo certo, para que a sua operação não pare.</h2>
+      <p class="banner__text">Um único interlocutor para especificação, compra internacional, nacionalização e entrega técnica.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GOVERNANÇA & ESG ============ -->
+<section class="section section--light" id="esg" aria-labelledby="esg-title">
+  <div class="container">
+    <div class="esg__head reveal">
+      <div>
+        <span class="eyebrow">Governança &amp; ESG</span>
+        <h2 class="section-title" id="esg-title" style="margin-top:16px">Pilares que sustentam cada embarque.</h2>
+      </div>
+      <p class="section-lead">Integridade, qualidade certificada e verificação independente na origem: um ciclo de controle que protege o seu projeto e a sua reputação.</p>
+    </div>
+
+    <div class="esg__body">
+      <div class="timeline reveal" role="tablist" aria-label="Pilares de governança" aria-orientation="vertical">
+        <span class="timeline__progress" aria-hidden="true"></span>
+        <button class="timeline__tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">
+          <span class="timeline__marker">01</span><span class="timeline__label"><span class="timeline__kicker">Integridade</span><span class="timeline__name">Compliance &amp; Ética</span></span>
+        </button>
+        <button class="timeline__tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1">
+          <span class="timeline__marker">02</span><span class="timeline__label"><span class="timeline__kicker">Qualidade</span><span class="timeline__name">ISO 9001</span></span>
+        </button>
+        <button class="timeline__tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1">
+          <span class="timeline__marker">03</span><span class="timeline__label"><span class="timeline__kicker">Verificação</span><span class="timeline__name">Inspeção pré-embarque (PSI)</span></span>
+        </button>
+        <button class="timeline__tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1">
+          <span class="timeline__marker">04</span><span class="timeline__label"><span class="timeline__kicker">Sustentabilidade</span><span class="timeline__name">Responsabilidade ESG</span></span>
+        </button>
+      </div>
+
+      <div>
+        <article class="esg-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" tabindex="0">
+          <span class="esg-panel__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3 class="esg-panel__title">Compliance &amp; Ética</h3>
+          <p class="esg-panel__text">Programa de integridade aderente à Lei Anticorrupção (Lei 12.846/2013), com due diligence de fornecedores e parceiros comerciais antes de qualquer contratação.</p>
+          <ul class="esg-panel__list">
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Código de Conduta e Política Anticorrupção</li>
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Due diligence (KYC) de fabricantes e intermediários</li>
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Canal de denúncias independente e confidencial</li>
+          </ul>
+        </article>
+        <article class="esg-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" tabindex="0" hidden>
+          <span class="esg-panel__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></span>
+          <h3 class="esg-panel__title">Sistema de Gestão da Qualidade — ISO 9001</h3>
+          <p class="esg-panel__text">Processos de compra, recebimento, armazenagem e expedição padronizados e auditados, com indicadores de desempenho e melhoria contínua. [Confirmar escopo e organismo certificador.]</p>
+          <ul class="esg-panel__list">
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Qualificação e avaliação periódica de fornecedores</li>
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Controle documental: data books, certificados e ensaios</li>
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Tratamento de não conformidades e ações corretivas</li>
+          </ul>
+        </article>
+        <article class="esg-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" tabindex="0" hidden>
+          <span class="esg-panel__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8 11h6M11 8v6"/></svg></span>
+          <h3 class="esg-panel__title">Inspeção pré-embarque (PSI)</h3>
+          <p class="esg-panel__text">Verificação independente na fábrica de origem antes do embarque: conformidade com a especificação contratada, quantidade, embalagem e marcação — reduzindo riscos de retrabalho e atrasos no desembaraço.</p>
+          <ul class="esg-panel__list">
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Testes de aceitação em fábrica (FAT) acompanhados</li>
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Conferência de normas ABNT NBR e IEC aplicáveis</li>
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Relatório fotográfico e liberação formal de embarque</li>
+          </ul>
+        </article>
+        <article class="esg-panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" tabindex="0" hidden>
+          <span class="esg-panel__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c0-9 6-15 15-16-1 9-7 15-16 16z"/><path d="M5 21 13 13"/></svg></span>
+          <h3 class="esg-panel__title">Responsabilidade ESG</h3>
+          <p class="esg-panel__text">Portfólio orientado à transição energética e cadeia de fornecimento monitorada quanto a critérios ambientais, sociais e trabalhistas.</p>
+          <ul class="esg-panel__list">
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Foco em soluções para geração renovável e eficiência</li>
+            <li class="esg-panel__item"><svg class="esg-panel__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Critérios socioambientais na homologação de fornecedores</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOWCASE DE SOLUÇÕES ============ -->
+<section class="section section--dark" id="solucoes" aria-labelledby="solucoes-title">
+  <div class="container">
+    <div class="solutions__head reveal">
+      <div>
+        <span class="eyebrow eyebrow--on-dark">Soluções</span>
+        <h2 class="section-title" id="solucoes-title" style="margin-top:16px">Portfólio para a infraestrutura elétrica de alta performance.</h2>
+      </div>
+      <p class="section-lead section-lead--on-dark">Três frentes integradas — da geração renovável à proteção e ao controle — com sourcing global e engenharia de aplicação.</p>
+    </div>
+
+    <div class="solutions__grid">
+      <article class="solution solution--featured reveal" data-tilt>
+        <img class="solution__img"
+          src="img/energia-solar.webp"
+            srcset="img/energia-solar-480.webp 480w, img/energia-solar.webp 736w"
+          sizes="(min-width: 1024px) 384px, (min-width: 768px) 100vw, 100vw"
+          loading="lazy" decoding="async" width="736" height="1104"
+            alt="Técnico de capacete instalando painéis solares">
+        <div class="solution__body">
+          <span class="solution__code">SOL-01</span>
+          <h3 class="solution__title">Energia Solar</h3>
+          <p class="solution__text">Equipamentos para usinas fotovoltaicas de solo e geração distribuída de grande porte.</p>
+          <ul class="solution__list">
+            <li>Módulos, inversores centrais e string</li>
+            <li>Eletrocentros e subestações elevadoras</li>
+            <li>Estruturas e trackers</li>
+          </ul>
+          <a class="solution__link" href="#contact-form" data-focus="f-nome">Solicitar proposta <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="solution reveal" data-tilt style="--reveal-delay:.1s">
+        <img class="solution__img"
+          src="img/alta-tensao-subestacao.webp"
+            srcset="img/alta-tensao-subestacao-480.webp 480w, img/alta-tensao-subestacao.webp 735w"
+          sizes="(min-width: 1024px) 384px, (min-width: 768px) 50vw, 100vw"
+          loading="lazy" decoding="async" width="735" height="974"
+            alt="Subestação de alta tensão ao entardecer">
+        <div class="solution__body">
+          <span class="solution__code">AT-02</span>
+          <h3 class="solution__title">Alta Tensão</h3>
+          <p class="solution__text">Transformação, manobra e proteção para subestações industriais e de concessionárias.</p>
+          <ul class="solution__list">
+            <li>Transformadores de potência</li>
+            <li>Disjuntores, seccionadoras e para-raios</li>
+            <li>Cabos e acessórios de AT</li>
+          </ul>
+          <a class="solution__link" href="#contact-form" data-focus="f-nome">Solicitar proposta <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="solution reveal" data-tilt style="--reveal-delay:.2s">
+        <img class="solution__img"
+          src="img/automacao-painel.webp"
+            srcset="img/automacao-painel-480.webp 480w, img/automacao-painel.webp 1024w"
+          sizes="(min-width: 1024px) 384px, (min-width: 768px) 50vw, 100vw"
+          loading="lazy" decoding="async" width="1024" height="1024"
+            alt="Painel elétrico industrial com disjuntores">
+        <div class="solution__body">
+          <span class="solution__code">AUT-03</span>
+          <h3 class="solution__title">Automação</h3>
+          <p class="solution__text">Painéis, proteção digital e controle para operação contínua e monitorada.</p>
+          <ul class="solution__list">
+            <li>Painéis QGBT, CCM e de automação</li>
+            <li>Relés de proteção e medição</li>
+            <li>Integração SCADA e telemetria</li>
+          </ul>
+          <a class="solution__link" href="#contact-form" data-focus="f-nome">Solicitar proposta <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO CORPORATIVO ============ -->
+<section class="section section--dark contact" id="contato" aria-labelledby="contato-title" style="border-top:1px solid #1E293B">
+  <div class="container contact__layout">
+    <div class="contact__info reveal">
+      <span class="eyebrow eyebrow--on-dark">Diretoria &amp; RI</span>
+      <h2 class="section-title" id="contato-title">Converse com a nossa diretoria.</h2>
+      <p class="section-lead section-lead--on-dark">Atendimento dedicado para projetos, investidores, fornecedores e parceiros estratégicos. Retornamos em até 12 horas úteis.</p>
+      <div class="contact__channels">
+        <div class="channel"><div class="channel__label">Diretoria Comercial</div><div class="channel__value"><a href="tel:+558135257200" style="color:inherit">(81) 3525-7200</a></div></div>
+        <div class="channel"><div class="channel__label">Relações com Investidores</div><div class="channel__value"><a href="mailto:comercial@eletriccomercial.com.br" style="color:inherit">comercial@eletriccomercial.com.br</a></div></div>
+        <div class="channel"><div class="channel__label">Sede</div><div class="channel__value">Rod. PE 05 Km 22,5, 3233C Dist. Ind. Santos Dumont<br>São Lourenço da Mata | PE</div></div>
+      </div>
+    </div>
+
+    <!-- Substitua action pelo endpoint real (CRM, Formspree, backend próprio). -->
+    <form class="form reveal" id="contact-form" action="#" method="post" novalidate aria-labelledby="form-title" style="--reveal-delay:.1s">
+      <div class="form__header">
+        <h3 class="form__title" id="form-title">Solicitação corporativa</h3>
+        <p class="form__subtitle">Campos com <span class="form__req" aria-hidden="true">*</span><span class="visually-hidden">asterisco</span> são obrigatórios.</p>
+      </div>
+      <div class="form__grid">
+        <div class="form__field">
+          <label class="form__label" for="f-nome">Nome completo <span class="form__req" aria-hidden="true">*</span></label>
+          <input class="form__control" id="f-nome" name="nome" type="text" autocomplete="name" required minlength="3" aria-describedby="e-nome" data-msg="Informe seu nome completo (mín. 3 caracteres).">
+          <span class="form__error" id="e-nome" aria-live="polite"></span>
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="f-empresa">Empresa <span class="form__req" aria-hidden="true">*</span></label>
+          <input class="form__control" id="f-empresa" name="empresa" type="text" autocomplete="organization" required minlength="2" aria-describedby="e-empresa" data-msg="Informe o nome da empresa.">
+          <span class="form__error" id="e-empresa" aria-live="polite"></span>
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="f-email">E-mail corporativo <span class="form__req" aria-hidden="true">*</span></label>
+          <input class="form__control" id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email" data-msg="Informe um e-mail válido (ex.: nome@empresa.com.br).">
+          <span class="form__error" id="e-email" aria-live="polite"></span>
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="f-tel">Telefone</label>
+          <input class="form__control" id="f-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" pattern="^\(\d{2}\) \d{4,5}-\d{4}$" aria-describedby="e-tel" data-msg="Use o formato (00) 00000-0000.">
+          <span class="form__error" id="e-tel" aria-live="polite"></span>
+        </div>
+        <div class="form__field form__field--full">
+          <label class="form__label" for="f-assunto">Área de interesse <span class="form__req" aria-hidden="true">*</span></label>
+          <select class="form__control" id="f-assunto" name="assunto" required aria-describedby="e-assunto" data-msg="Selecione uma área de interesse.">
+            <option value="">Selecione…</option>
+            <option>Diretoria Comercial — projetos e cotações</option>
+            <option>Relações com Investidores</option>
+            <option>Compliance e Governança</option>
+            <option>Homologação de fornecedores</option>
+          </select>
+          <span class="form__error" id="e-assunto" aria-live="polite"></span>
+        </div>
+        <div class="form__field form__field--full">
+          <label class="form__label" for="f-msg">Mensagem <span class="form__req" aria-hidden="true">*</span></label>
+          <textarea class="form__control form__control--textarea" id="f-msg" name="mensagem" required minlength="20" maxlength="1200" aria-describedby="e-msg h-msg" data-msg="Descreva sua demanda (mín. 20 caracteres)."></textarea>
+          <span class="form__hint" id="h-msg"><span>Escopo, prazos e volumes ajudam no retorno.</span><span data-counter>0/1200</span></span>
+          <span class="form__error" id="e-msg" aria-live="polite"></span>
+        </div>
+        <div class="form__field form__field--full">
+          <label class="form__consent" for="f-lgpd">
+            <input class="form__checkbox" id="f-lgpd" name="lgpd" type="checkbox" required aria-describedby="e-lgpd" data-msg="É necessário autorizar o tratamento dos dados.">
+            <span>Autorizo o tratamento dos meus dados para retorno desta solicitação, conforme a Política de Privacidade (LGPD).</span>
+          </label>
+          <span class="form__error" id="e-lgpd" aria-live="polite"></span>
+        </div>
+      </div>
+      <p class="form__status" role="status" aria-live="polite"></p>
+      <button class="btn btn--primary btn--lg btn--block" type="submit">Enviar solicitação
+        <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER CORPORATIVO ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a class="brand" href="#topo" aria-label="Eletric Comercial — início">
+          <img class="brand__logo brand__logo--footer" src="data:image/webp;base64,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" alt="Eletric Comercial" width="480" height="86" loading="lazy">
+        </a>      </div>
+      <nav aria-label="Institucional">
+        <h2 class="footer__heading">Institucional</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="#companhia">A Companhia</a></li>
+          <li><a class="footer__link" href="#solucoes">Soluções</a></li>
+          <li><a class="footer__link" href="#esg">ESG</a></li>
+          <li><a class="footer__link" href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Governança">
+        <h2 class="footer__heading">Governança</h2>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="#">Código de Conduta</a></li>
+          <li><a class="footer__link" href="#">Política Anticorrupção</a></li>
+          <li><a class="footer__link" href="#">Canal de Denúncias</a></li>
+          <li><a class="footer__link" href="#">Política de Privacidade (LGPD)</a></li>
+          <li><a class="footer__link" href="#">Relatório ESG</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="footer__heading">Dados corporativos</h2>
+        <address class="footer__legal">
+          <span>Eletric Comercial</span>
+          <span>CNPJ: 08.007.877/0001-16</span>
+          <span>Sede fiscal: Rod. PE 05 Km 22,5, 3233C Dist. Ind. Santos Dumont</span>
+          <span>São Lourenço da Mata | PE</span>
+        </address>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> Eletric Comercial. Todos os direitos reservados.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var doc = document.documentElement;
+  var reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduce = reduceMQ.matches;
+  if (!reduce) doc.classList.add('js');
+
+  /* ---------- Header glass + menu mobile ---------- */
+  var header = document.getElementById('header');
+  var toggle = document.querySelector('.nav__toggle');
+  var menu = document.getElementById('menu');
+  function setMenu(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    menu.classList.toggle('nav__menu--open', open);
+  }
+  toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('nav__menu--open')) { setMenu(false); toggle.focus(); } });
+
+  /* ---------- Parallax via transform (rAF) ---------- */
+  var layers = [].slice.call(document.querySelectorAll('[data-parallax]'));
+  var marquees = [].slice.call(document.querySelectorAll('[data-marquee]'));
+  var ticking = false;
+  var desktop = window.matchMedia('(min-width: 768px)');
+
+  function update() {
+    ticking = false;
+    var y = window.scrollY || window.pageYOffset;
+    header.classList.toggle('header--scrolled', y > 24);
+    if (reduce) return;
+    var vh = window.innerHeight;
+    var factor = desktop.matches ? 1 : 0.45; // fallback suave em mobile
+    layers.forEach(function (el) {
+      var speed = parseFloat(el.getAttribute('data-parallax')) || 0;
+      var rect = el.getBoundingClientRect();
+      if (rect.bottom < -200 || rect.top > vh + 200) return;
+      el.style.transform = 'translate3d(0,' + (y * speed * factor).toFixed(1) + 'px,0)';
+    });
+    marquees.forEach(function (el) {
+      var host = el.parentElement.getBoundingClientRect();
+      if (host.bottom < 0 || host.top > vh) return;
+      var p = (vh - host.top) * (parseFloat(el.getAttribute('data-marquee')) || 0.3);
+      el.style.transform = 'translate3d(' + (-p).toFixed(1) + 'px,0,0)';
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+
+  reduceMQ.addEventListener && reduceMQ.addEventListener('change', function (e) {
+    reduce = e.matches;
+    doc.classList.toggle('js', !reduce);
+    if (reduce) layers.concat(marquees).forEach(function (el) { el.style.transform = ''; });
+    update();
+  });
+
+  /* ---------- Active link ---------- */
+  var navLinks = [].slice.call(document.querySelectorAll('.nav__link'));
+  var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+
+  /* ---------- IntersectionObserver: reveal, contadores, nav ---------- */
+  if ('IntersectionObserver' in window) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('is-visible');
+        en.target.querySelectorAll('[data-count]').forEach(countUp);
+        revealIO.unobserve(en.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { revealIO.observe(el); });
+
+    var navIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(function (a) { a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + en.target.id); if (a.hasAttribute('aria-current')) a.setAttribute('aria-current', 'true'); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { navIO.observe(s); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  function countUp(el) {
+    var target = parseFloat(el.getAttribute('data-target'));
+    if (isNaN(target)) return; // mantém o placeholder até o número real ser informado
+    if (reduce) { el.textContent = target.toLocaleString('pt-BR'); return; }
+    var start = null, dur = 1600;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString('pt-BR');
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------- Linha do tempo ESG (tabs acessíveis) ---------- */
+  var tablist = document.querySelector('.timeline');
+  var tabs = [].slice.call(tablist.querySelectorAll('[role="tab"]'));
+  var progress = tablist.querySelector('.timeline__progress');
+  function selectTab(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    var first = tabs[0].querySelector('.timeline__marker').getBoundingClientRect();
+    var cur = tab.querySelector('.timeline__marker').getBoundingClientRect();
+    progress.style.height = Math.max(0, cur.top - first.top) + 'px';
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { selectTab(tab); });
+    tab.addEventListener('keydown', function (e) {
+      var k = e.key, n = null;
+      if (k === 'ArrowDown' || k === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      else if (k === 'ArrowUp' || k === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') n = tabs[0];
+      else if (k === 'End') n = tabs[tabs.length - 1];
+      if (n) { e.preventDefault(); selectTab(n, true); }
+    });
+  });
+  window.addEventListener('resize', function () { var s = tabs.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0]; if (s) selectTab(s); });
+
+  /* ---------- Cards de solução: tilt 3D + brilho ---------- */
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('[data-tilt]').forEach(function (card) {
+    card.addEventListener('pointermove', function (e) {
+      if (reduce || !fine.matches) return;
+      var r = card.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--ry', ((px - .5) * 8).toFixed(2) + 'deg');
+      card.style.setProperty('--rx', ((.5 - py) * 8).toFixed(2) + 'deg');
+      card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+    });
+    card.addEventListener('pointerleave', function () { card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg'); });
+  });
+
+  /* ---------- Formulário: validação em tempo real ---------- */
+  var form = document.getElementById('contact-form');
+  var statusEl = form.querySelector('.form__status');
+  var controls = [].slice.call(form.querySelectorAll('input, select, textarea'));
+  var tel = document.getElementById('f-tel');
+  var msg = document.getElementById('f-msg');
+  var counter = form.querySelector('[data-counter]');
+
+  tel.addEventListener('input', function () {
+    var d = tel.value.replace(/\D/g, '').slice(0, 11);
+    var out = d;
+    if (d.length > 0) out = '(' + d.slice(0, 2);
+    if (d.length >= 3) out += ') ' + (d.length > 10 ? d.slice(2, 7) + '-' + d.slice(7) : d.slice(2, 6) + (d.length > 6 ? '-' + d.slice(6) : ''));
+    tel.value = out;
+  });
+  msg.addEventListener('input', function () { counter.textContent = msg.value.length + '/1200'; });
+
+  function validate(el, show) {
+    var field = el.closest('.form__field');
+    var err = document.getElementById(el.getAttribute('aria-describedby').split(' ')[0]);
+    var ok = el.checkValidity();
+    if (ok && el.type === 'email' && el.value) ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(el.value);
+    if (!show && !el.dataset.touched) return ok;
+    field.classList.toggle('form__field--invalid', !ok);
+    field.classList.toggle('form__field--valid', ok && (el.value !== '' || el.type === 'checkbox'));
+    el.setAttribute('aria-invalid', String(!ok));
+    err.textContent = ok ? '' : el.getAttribute('data-msg');
+    return ok;
+  }
+  controls.forEach(function (el) {
+    el.addEventListener('blur', function () { if (el.value !== '' || el.required) { el.dataset.touched = '1'; validate(el, true); } });
+    el.addEventListener('input', function () { if (el.dataset.touched) validate(el, true); });
+    el.addEventListener('change', function () { el.dataset.touched = '1'; validate(el, true); });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var firstBad = null;
+    controls.forEach(function (el) { el.dataset.touched = '1'; if (!validate(el, true) && !firstBad) firstBad = el; });
+    if (firstBad) {
+      statusEl.className = 'form__status form__status--error';
+      statusEl.textContent = 'Revise os campos destacados antes de enviar.';
+      firstBad.focus();
+      return;
+    }
+    // Integração: substituir por fetch(form.action, { method: 'POST', body: new FormData(form) })
+    statusEl.className = 'form__status form__status--success';
+    statusEl.textContent = 'Solicitação enviada. Nossa diretoria retornará em breve.';
+    form.reset(); counter.textContent = '0/1200';
+    controls.forEach(function (el) { delete el.dataset.touched; el.removeAttribute('aria-invalid'); el.closest('.form__field').classList.remove('form__field--valid', 'form__field--invalid'); });
+  });
+
+  /* Links das soluções: rolam até o formulário e focam o primeiro campo */
+  document.querySelectorAll('[data-focus]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var f = document.getElementById(a.getAttribute('data-focus'));
+      if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, reduce ? 0 : 600);
+    });
+  });
+
+  var yr = document.querySelector('[data-year]'); if (yr) yr.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
